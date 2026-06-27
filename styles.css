@@ -1,0 +1,92 @@
+.glass-container {
+    background: rgba(47, 34, 34, 0.03);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 215, 0, 0.15);
+}
+
+.neon-glow-primary {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.15);
+}
+
+.neon-glow-primary:hover {
+    box-shadow: 0 0 35px rgba(255, 215, 0, 0.3);
+}
+
+.card-hover:hover {
+    border-color: #ffd700;
+    background: rgba(255, 215, 0, 0.05);
+    transform: translateY(-4px);
+}
+
+body {
+    background-color: #000000;
+    color: #e4e2e4;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #131315;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1f1f21;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #ffd700;
+}
+
+.bg-watermark {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vmin;
+    height: 70vmin;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+    object-fit: contain;
+    filter: grayscale(30%);
+}
+/* ========================================== */
+/* AKGEC SPACE PREMIUM GLASS STYLING FOR KTECH */
+/* ========================================== */
+
+/* Canvas fixing to avoid scroll lag */
+#space-particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+}
+
+/* Enhancing kTech Glass Cards exactly like AKGEC Space design */
+.glass-card, .course-card, .contact-form-container {
+    background: rgba(255, 255, 255, 0.02) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border: 1px solid rgba(255, 215, 0, 0.08) !important; /* Premium Golden Line Border */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+/* Hover effects matching the precise interactive weight of AKGEC */
+.glass-card:hover, .course-card:hover {
+    transform: translateY(-5px) !important;
+    border-color: rgba(255, 217, 0, 0.523) !important;
+    box-shadow: 0 12px 40px 0 rgba(255, 215, 0, 0.05) !important;
+}
+
+/* Custom Selection Highlight */
+::selection {
+    background: rgba(255, 217, 0, 0.655);
+    color: #fff;
+}
