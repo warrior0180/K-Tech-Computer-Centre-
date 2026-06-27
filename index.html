@@ -121,10 +121,10 @@
     <!-- INTERACTIVE BACKGROUND ELEMENTS -->
     <div id="space-interactive-bg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none;">
         <!-- Ambient Base Glows -->
-        <div style="position: absolute; width: 45vw; height: 45vw; background: radial-gradient(circle, rgba(255, 215, 0, 0.08) 0%, transparent 70%); top: -10%; left: -10%; filter: blur(60px);"></div>
-        <div style="position: absolute; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(253, 212, 135, 0.06) 0%, transparent 70%); bottom: -10%; right: -10%; filter: blur(80px);"></div>
+        <div style="position: absolute; width: 45vw; height: 45vw; background: radial-gradient(circle, rgba(255, 215, 0, 0.16) 0%, rgba(255, 215, 0, 0.06) 20%, transparent 75%); top: -10%; left: -10%; filter: blur(80px);"></div>
+        <div style="position: absolute; width: 50vw; height: 50vw; background: radial-gradient(circle, rgba(255, 215, 0, 0.14) 0%, rgba(255, 215, 0, 0.05) 22%, transparent 75%); bottom: -10%; right: -10%; filter: blur(95px);"></div>
         <!-- Dynamic Cursor Follower Glow Orb -->
-        <div id="cursor-glow-orb" style="position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 215, 0, 0.14) 0%, rgba(253, 212, 135, 0.04) 40%, transparent 70%); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; top: -500px; left: -500px; filter: blur(40px); transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
+        <div id="cursor-glow-orb" style="position: absolute; width: 420px; height: 420px; background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.06) 40%, transparent 75%); border-radius: 50%; transform: translate(-50%, -50%); pointer-events: none; top: -500px; left: -500px; filter: blur(45px); transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);"></div>
         <!-- Particle Canvas Layer -->
         <canvas id="space-particles-canvas" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0.65;"></canvas>
     </div>
@@ -132,35 +132,29 @@
     <img src="kTech_TPGE-removebg-preview.png" alt="" class="bg-watermark" aria-hidden="true" />
 
     <!-- TopNavBar -->
-    <nav
-        class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md border-b border-surface-tint/20 shadow-[0_0_20px_rgba(255,215,0,0.05)]">
-        <div class="flex justify-between items-center h-20 px-margin-desktop max-w-container-max mx-auto">
-            <div class="flex items-center gap-3">
-                <img alt="kTech Logo" class="h-10 w-10 object-contain" src="kTech_TPGE-removebg-preview.png" />
-                <div class="font-headline-lg text-headline-lg font-bold text-primary-container tracking-tight">kTech
-                </div>
+    <nav class="top-header">
+        <div class="top-header-inner">
+            <div class="top-brand">
+                <img alt="kTech Logo" class="top-brand-icon" src="kTech_TPGE-removebg-preview.png" />
+                <div class="top-brand-title">kTech</div>
             </div>
-            <div class="hidden md:flex items-center gap-8">
-                <a class="text-primary-container border-b-2 border-primary-container pb-1 font-label-md text-label-md"
-                    href="#">Home</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
-                    href="#courses">Courses</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
-                    href="#about">About</a>
-                <a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md"
-                    href="#contact">Contact</a>
+            <div class="top-links hidden md:flex">
+                <a class="top-link active" href="#home">Home</a>
+                <a class="top-link" href="#courses">Courses</a>
+                <a class="top-link" href="#about">About</a>
+                <a class="top-link" href="#contact">Contact</a>
             </div>
-            <button
-                class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-lg font-bold hover:scale-105 active:scale-95 transition-all neon-glow-primary">
-                Join Now
-            </button>
+            <button class="top-cta">Join Now</button>
         </div>
     </nav>
     <main class="relative pt-20">
         <!-- Hero Section -->
-        <section
+        <section id="home"
             class="min-h-[921px] flex items-center justify-center text-center px-margin-mobile md:px-margin-desktop">
             <div class="max-w-4xl">
+                <div class="hero-logo-wrapper mx-auto mb-6">
+                    <img src="kTech_TPGE-removebg-preview.png" alt="kTech logo" class="hero-floating-logo" />
+                </div>
                 <span class="font-label-sm text-label-sm text-surface-tint uppercase tracking-[0.3em] mb-6 block">The
                     Aurum Era of Computing</span>
                 <h1 class="font-display-lg text-display-lg text-primary mb-8 animate-in fade-in duration-1000">
@@ -230,101 +224,147 @@
             </div>
         </section>
        
+       
         <section class="py-stack-lg px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto" id="courses">
             <div class="text-center mb-stack-md">
-                <h2 class="font-headline-lg text-headline-lg text-primary mb-4">Our Core Programs</h2>
-                <p class="text-on-surface-variant font-body-md">Choose your path towards digital mastery.</p>
+                <h2 class="font-headline-lg text-headline-lg text-primary mb-4 section-title">Our Core Programs</h2>
+                <p class="text-on-surface-variant font-body-md section-subtitle">Choose your path towards digital mastery.</p>
             </div>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
-                <!-- Course 1 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">laptop_mac</span>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/DCA/1.png" alt="DCA Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/DCA/2.png" alt="DCA Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">Basic Computer</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Foundational mastery of operating systems, office productivity suites, and digital literacy.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
                 </div>
-                <!-- Course 2 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">code</span>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/ADCA/1.png" alt="ADCA Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/ADCA/2.png" alt="ADCA Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">Web Development</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Master the modern web stack using Python, JavaScript, and advanced CSS frameworks.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
                 </div>
-                <!-- Course 3 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">developer_mode</span>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/CCC/1.png" alt="CCC Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/CCC/2.png" alt="CCC Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">Programming</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Deep dive into logic and structures with intensive C++, Python, and Algorithm modules.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
                 </div>
-                <!-- Course 4 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">account_balance_wallet</span>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/DTP/1.png" alt="DTP Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/DTP/2.png" alt="DTP Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">Tally Prime</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Professional financial accounting and inventory management with GST implementation.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
                 </div>
-                <!-- Course 5 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">token</span>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/TALLY/1.png" alt="Tally Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/TALLY/2.png" alt="Tally Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">DCA</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Diploma in Computer Applications covering desktop publishing, database, and web basics.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
                 </div>
-                <!-- Course 6 -->
-                <div
-                    class="glass-container p-8 rounded-2xl card-hover transition-all duration-300 flex flex-col h-full border-surface-tint/10">
-                    <div
-                        class="w-14 h-14 bg-surface-tint/5 rounded-xl flex items-center justify-center mb-6 border border-surface-tint/20">
-                        <span class="material-symbols-outlined text-surface-tint text-3xl">workspace_premium</span>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/BASIC/1.png" alt="Basic Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/BASIC/2.png" alt="Basic Details View">
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <h3 class="font-headline-lg text-xl text-primary mb-4">ADCA</h3>
-                    <p class="text-on-surface-variant font-body-md mb-8 flex-grow">
-                        Advanced Diploma for those seeking deep technical expertise and systems administration.
-                    </p>
-                    <button
-                        class="w-full py-3 rounded-lg border border-surface-tint/30 text-surface-tint font-semibold hover:bg-surface-tint hover:text-on-primary transition-all">Learn
-                        More</button>
+                </div>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/OLevel/1.png" alt="O Level Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/OLevel/2.png" alt="O Level Details View">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/TYPING/1.png" alt="Typing Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/TYPING/2.png" alt="Typing Details View">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="course-card-item">
+                    <div class="ktech-card-wrapper">
+                        <div class="ktech-card-container">
+                            <div class="ktech-card-inner">
+                                <div class="ktech-card-front">
+                                    <img src="Images/OAC/1.png" alt="OAC Front View">
+                                </div>
+                                <div class="ktech-card-back">
+                                    <img src="Images/OAC/2.png" alt="OAC Details View">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -389,9 +429,8 @@
                         </div>
                         <div
                             class="absolute bottom-6 left-6 right-6 p-4 glass-container rounded-xl border-surface-tint/20 bg-surface/80">
-                            <p class="font-label-sm text-label-sm text-primary-container">kTech Main Campus</p>
-                            <p class="text-on-surface-variant text-sm mt-1">102 Tech Plaza, Innovation District, CA
-                                94043</p>
+                            <p class="font-label-sm text-label-sm text-primary-container">K-Tech Computer Centre</p>
+                            <p class="text-on-surface-variant text-sm mt-1">Banu Medical Store ke bagal, Khajni - Gorakpur</p>
                         </div>
                     </div>
                     <div class="grid grid-cols-2 gap-gutter">
@@ -399,14 +438,14 @@
                             <span class="material-symbols-outlined text-surface-tint">call</span>
                             <div>
                                 <p class="text-xs font-label-sm text-on-surface-variant">Phone</p>
-                                <p class="text-primary font-bold">+1 800 555 1337</p>
+                                <p class="text-primary font-bold">8808774238, 9519958628</p>
                             </div>
                         </div>
                         <div class="glass-container p-6 rounded-2xl flex items-center gap-4 border-surface-tint/10">
-                            <span class="material-symbols-outlined text-surface-tint">mail</span>
+                            <span class="material-symbols-outlined text-surface-tint">location_on</span>
                             <div>
-                                <p class="text-xs font-label-sm text-on-surface-variant">Email</p>
-                                <p class="text-primary font-bold">admissions@ktech.edu</p>
+                                <p class="text-xs font-label-sm text-on-surface-variant">Location</p>
+                                <p class="text-primary font-bold">Khajni, Gorakpur</p>
                             </div>
                         </div>
                     </div>
@@ -485,8 +524,8 @@
                 Networks Division. All Rights Reserved.</p>
         </div>
     </footer>
-    <div id="akgec-space-root" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background: #060211; pointer-events: none;">
-    <div id="space-mouse-glow" style="position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.02) 50%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); top: -1000px; left: -1000px; filter: blur(30px); mix-blend-mode: screen;"></div>
+    <div id="akgec-space-root" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background: #000000; pointer-events: none;">
+    <div id="space-mouse-glow" style="position: absolute; width: 520px; height: 520px; background: radial-gradient(circle, rgba(255, 220, 120, 0.14) 0%, rgba(255, 220, 120, 0.03) 50%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); top: -1000px; left: -1000px; filter: blur(34px); mix-blend-mode: screen;"></div>
 </div>
 
 <script src="script.js"></script>

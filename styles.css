@@ -12,6 +12,95 @@
     box-shadow: 0 0 35px rgba(255, 215, 0, 0.3);
 }
 
+.top-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 50;
+    backdrop-filter: blur(18px);
+    background: rgba(10, 10, 12, 0.75);
+    border-bottom: 1px solid rgba(255, 215, 0, 0.08);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.top-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 16px;
+    height: 60px;
+}
+
+@media (min-width: 768px) {
+    .top-header-inner {
+        padding: 0 24px;
+        height: 76px;
+    }
+}
+
+.top-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.top-brand-icon {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+}
+
+.top-brand-title {
+    font-family: 'Sora', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #fff5d3;
+    text-shadow: 0 0 8px rgba(255, 215, 0, 0.18);
+}
+
+.top-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.top-link {
+    color: rgba(228, 226, 228, 0.8);
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.top-link:hover {
+    color: #ffd700;
+    transform: translateY(-1px);
+}
+
+.top-link.active {
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
+    padding-bottom: 0.35rem;
+}
+
+.top-cta {
+    background: linear-gradient(135deg, #ffd700, #ffdd70);
+    color: #111;
+    padding: 0.8rem 1.4rem;
+    border-radius: 999px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 15px 30px rgba(255, 205, 40, 0.22);
+}
+
+.top-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 20px 38px rgba(255, 205, 40, 0.3);
+}
+
 .card-hover:hover {
     border-color: #ffd700;
     background: rgba(255, 215, 0, 0.05);
@@ -20,7 +109,21 @@
 
 body {
     background-color: #000000;
+    background-image:
+        radial-gradient(circle at top left, rgba(255, 215, 0, 0.08), transparent 24%),
+        radial-gradient(circle at bottom right, rgba(255, 215, 0, 0.06), transparent 28%),
+        linear-gradient(135deg, #000000 0%, #020202 100%);
     color: #e4e2e4;
+    min-height: 100vh;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -3;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.7) 100%);
 }
 
 ::-webkit-scrollbar {
@@ -45,14 +148,85 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70vmin;
-    height: 70vmin;
-    opacity: 0.4;
+    width: 90vw;
+    height: 90vw;
+    opacity: 0.2;
     pointer-events: none;
     z-index: 0;
     object-fit: contain;
     filter: grayscale(30%);
 }
+
+@media (min-width: 768px) {
+    .bg-watermark {
+        width: 70vmin;
+        height: 70vmin;
+        opacity: 0.4;
+    }
+}
+
+.hero-logo-wrapper {
+    max-width: 180px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.hero-floating-logo {
+    width: 100%;
+    max-width: 180px;
+    display: block;
+    margin: 0 auto;
+    animation: floatY 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 16px rgba(255, 215, 0, 0.25)) drop-shadow(0 0 32px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes floatY {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-14px);
+    }
+}
+
+.banner {
+    width: 100%;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.slider {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    top: 10%;
+    left: calc(50% - 100px);
+    /* 3D setting activate karne ke liye */
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    /* Animation chalane ke liye */
+    animation: autoRun 20s linear infinite;
+}
+
+/* Har ek Course item ko circle me arrange karne ke liye formula [00:06:44] */
+.slider .item {
+    position: absolute;
+    inset: 0 0 0 0;
+    transform: 
+        rotateY(calc( (var(--position) - 1) * (360deg / var(--quantity)) ))
+        translateZ(550px); /* 550px radius ka circle banega [00:03:19] */
+}
+
+.slider .item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Rounded corners ke liye */
+}
+/* Continuous Rotation Animation [00:08:41] */
+/* removed - banner rotation disabled */
 /* ========================================== */
 /* AKGEC SPACE PREMIUM GLASS STYLING FOR KTECH */
 /* ========================================== */
@@ -66,6 +240,12 @@ body {
     height: 100%;
     z-index: -2;
     pointer-events: none;
+    opacity: 0.9;
+}
+
+#space-interactive-bg,
+#akgec-space-root {
+    background: #000000 !important;
 }
 
 /* Enhancing kTech Glass Cards exactly like AKGEC Space design */
@@ -85,8 +265,131 @@ body {
     box-shadow: 0 12px 40px 0 rgba(255, 215, 0, 0.05) !important;
 }
 
+#courses.js-reveal .section-title,
+#courses.js-reveal .section-subtitle {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+#courses.js-reveal .section-title.visible,
+#courses.js-reveal .section-subtitle.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+#courses.js-reveal .glass-container {
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.75s ease, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#courses.js-reveal .glass-container.from-left {
+    transform: translateX(-72px);
+}
+
+#courses.js-reveal .glass-container.from-right {
+    transform: translateX(72px);
+}
+
+#courses.js-reveal .glass-container.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
 /* Custom Selection Highlight */
 ::selection {
     background: rgba(255, 217, 0, 0.655);
     color: #fff;
 }
+
+/* ================= DCA Flipping Card Styles ================ */
+.ktech-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.ktech-card-container {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16 / 9;
+    perspective: 1500px;
+    margin: 0 auto;
+}
+
+.ktech-card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.ktech-card-container:hover .ktech-card-inner {
+    transform: rotateY(180deg);
+}
+
+.ktech-card-front, .ktech-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.ktech-card-front img, .ktech-card-back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ktech-card-back {
+    transform: rotateY(180deg);
+}
+
+.course-card-item {
+    width: 100%;
+}
+
+/* ================= END DCA Flipping Card Styles ================ */
+
+/* ================= Course Image Slots (image-only) ================ */
+.course-image-slot {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+}
+
+.course-img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.2, 1), box-shadow 0.35s ease;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+.course-img:hover {
+    transform: translateY(-8px) scale(1.05) rotateZ(-3deg);
+    box-shadow: 0 22px 44px rgba(0,0,0,0.22);
+}
+
+@media (max-width: 640px) {
+    .ktech-card-container {
+        max-width: 100%;
+    }
+}
+
+/* ================= END Course Image Slots ================ */
