@@ -29,7 +29,7 @@
     justify-content: space-between;
     max-width: 1280px;
     margin: 0 auto;
-    padding: 0 12px; /* मोबाइल पर गैप सही रखने के लिए थोड़ा कम किया */
+    padding: 0 12px; 
     height: 60px;
 }
 
@@ -43,7 +43,7 @@
 .top-brand {
     display: flex;
     align-items: center;
-    gap: 0.5rem; /* मोबाइल पर लोगो और टेक्स्ट के बीच की दूरी कम की */
+    gap: 0.5rem; 
 }
 
 @media (min-width: 768px) {
@@ -53,7 +53,7 @@
 }
 
 .top-brand-icon {
-    width: 34px; /* मोबाइल पर लोगो थोड़ा छोटा किया ताकि ओवरलैप न हो */
+    width: 34px;
     height: 34px;
     object-fit: contain;
 }
@@ -67,7 +67,7 @@
 
 .top-brand-title {
     font-family: 'Sora', sans-serif;
-    font-size: 1.1rem; /* मोबाइल के लिए फॉन्ट थोड़ा छोटा किया */
+    font-size: 1.1rem; 
     font-weight: 800;
     letter-spacing: -0.03em;
     color: #fff5d3;
@@ -81,14 +81,14 @@
 }
 
 .top-links {
-    display: none; /* मोबाइल पर पहले ये लिंक्स छुप जाएंगे, जैसा Tailwind चाहता है */
+    display: none;
     align-items: center;
     gap: 2rem;
 }
 
 @media (min-width: 768px) {
     .top-links {
-        display: flex; /* केवल डेस्कटॉप (md स्क्रीन) पर ही लिंक्स दिखाई देंगे */
+        display: flex; 
     }
 }
 
@@ -111,7 +111,7 @@
 }
 
 .top-cta {
-    display: none; /* मोबाइल पर 'Join Now' बटन को छुपाने के लिए */
+    display: none; 
     background: linear-gradient(135deg, #ffd700, #ffdd70);
     color: #111;
     padding: 0.8rem 1.4rem;
@@ -124,7 +124,7 @@
 
 @media (min-width: 768px) {
     .top-cta {
-        display: inline-block; /* केवल डेस्कटॉप (md स्क्रीन) पर बटन वापस दिखेगा */
+        display: inline-block;
     }
     .top-cta:hover {
         transform: translateY(-2px);
