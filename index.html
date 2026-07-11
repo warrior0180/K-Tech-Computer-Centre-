@@ -147,36 +147,63 @@
                     <a class="top-link" href="#contact">Contact</a>
                 </div>
                 <button class="top-cta">Join Now</button>
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-lg text-primary-container hover:bg-surface-tint/10 transition-colors" aria-label="Open Menu">
+                    <span class="material-symbols-outlined" style="font-size:28px;">menu</span>
+                </button>
             </div>
         </nav>
+        <!-- Mobile Nav Overlay -->
+        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+            <div id="mobile-nav-panel" class="mobile-nav-panel">
+                <div class="flex items-center justify-between mb-8">
+                    <div class="flex items-center gap-2">
+                        <img alt="kTech Logo" class="w-8 h-8 object-contain" src="kTech_TPGE-removebg-preview.png" />
+                        <span class="font-display-lg text-xl font-bold text-primary-container">kTech</span>
+                    </div>
+                    <button id="mobile-menu-close" class="w-10 h-10 flex items-center justify-center rounded-lg text-primary-container hover:bg-surface-tint/10 transition-colors" aria-label="Close Menu">
+                        <span class="material-symbols-outlined" style="font-size:28px;">close</span>
+                    </button>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <a class="mobile-nav-link" href="#home">Home</a>
+                    <a class="mobile-nav-link" href="#courses">Courses</a>
+                    <a class="mobile-nav-link" href="#about">About</a>
+                    <a class="mobile-nav-link" href="#contact">Contact</a>
+                </div>
+                <div class="mt-8">
+                    <a href="#contact" class="mobile-nav-cta">Join Now</a>
+                </div>
+            </div>
+        </div>
         <main class="relative">
 
             <!-- Hero Section -->
             <section id="home"
-                class="min-h-[921px] flex items-center justify-center text-center px-margin-mobile md:px-margin-desktop">
+                class="min-h-[100svh] md:min-h-[921px] flex items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-20 md:py-0">
                 <div class="max-w-4xl">
                     <div class="hero-logo-wrapper mx-auto mb-6">
                         <img src="kTech_TPGE-removebg-preview.png" alt="kTech logo" class="hero-floating-logo" />
                     </div>
                     <span class="font-label-sm text-label-sm text-surface-tint uppercase tracking-[0.3em] mb-6 block">The
                         Aurum Era of Computing</span>
-                    <h1 class="font-display-lg text-display-lg text-primary mb-8 animate-in fade-in duration-1000">
+                    <h1 class="font-display-lg text-[28px] sm:text-[36px] md:text-display-lg leading-tight text-primary mb-6 md:mb-8 animate-in fade-in duration-1000">
                         Empowering Your Future in the <span
                             class="text-transparent bg-clip-text bg-gradient-to-r from-primary-container via-primary-fixed-dim to-tertiary-fixed-dim">Digital
                             World</span>
                     </h1>
-                    <p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-2xl mx-auto">
+                    <p class="font-body-lg text-sm sm:text-base md:text-body-lg text-on-surface-variant mb-8 md:mb-10 max-w-2xl mx-auto">
                         Master modern technology with industry-aligned certifications. From core programming to advanced
                         full-stack development, we pave your way to professional excellence.
                     </p>
                     <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a class="bg-primary-container text-on-primary-container px-10 py-4 rounded-xl font-bold flex items-center gap-2 hover:translate-y-[-2px] transition-transform neon-glow-primary"
+                        <a class="bg-primary-container text-on-primary-container px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-bold flex items-center gap-2 hover:translate-y-[-2px] transition-transform neon-glow-primary text-sm sm:text-base"
                             href="#courses">
                             Explore Courses
                             <span class="material-symbols-outlined">north_east</span>
                         </a>
                         <button
-                            class="glass-container px-10 py-4 rounded-xl font-semibold border-surface-tint/20 text-primary-container hover:bg-surface-tint/10 transition-colors">
+                            class="glass-container px-8 sm:px-10 py-3 sm:py-4 rounded-xl font-semibold border-surface-tint/20 text-primary-container hover:bg-surface-tint/10 transition-colors text-sm sm:text-base">
                             View Schedule
                         </button>
                     </div>
@@ -187,7 +214,7 @@
                 <div
                     class="glass-container p-stack-md md:p-stack-lg rounded-3xl grid grid-cols-1 lg:grid-cols-2 gap-stack-md items-center">
                     <div class="space-y-6">
-                        <h2 class="font-headline-lg text-headline-lg text-primary">Mission: Bridging the Digital Divide</h2>
+                        <h2 class="font-headline-lg text-xl sm:text-2xl md:text-headline-lg text-primary">Mission: Bridging the Digital Divide</h2>
                         <p class="font-body-md text-body-md text-on-surface-variant">
                             At kTech, we believe that high-quality technical education should be immersive and
                             future-forward. Our curriculum is designed by neural network engineers and senior developers to
@@ -377,78 +404,116 @@
                     <!-- Contact Form -->
                     <div class="glass-container p-stack-md rounded-3xl border-surface-tint/10">
                         <h2 class="font-headline-lg text-headline-lg text-primary mb-8">Inquire Now</h2>
-                        <form class="space-y-6">
+                        <form id="inquiry-form" class="space-y-6">
                             <div class="space-y-2">
-                                <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Full Name</label>
-                                <input
+                                <label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="inquiry-name">Full Name <span class="text-error">*</span></label>
+                                <input id="inquiry-name"
                                     class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant"
-                                    placeholder="John Doe" type="text" />
+                                    placeholder="Apna naam likhen" type="text" required />
                             </div>
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div class="space-y-2">
-                                    <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Email
-                                        Address</label>
-                                    <input
-                                        class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant"
-                                        placeholder="john@ktech.edu" type="email" />
+                            <!-- Email / Phone — at least one required -->
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-2 ml-1">
+                                    <span class="material-symbols-outlined text-surface-tint text-base" style="font-size:18px;">info</span>
+                                    <span class="font-label-sm text-label-sm text-surface-tint">Email ya Phone — koi ek dena zaruri hai</span>
                                 </div>
-                                <div class="space-y-2">
-                                    <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Phone
-                                        Number</label>
-                                    <input
-                                        class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant"
-                                        placeholder="+1 (555) 000-0000" type="tel" />
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <label class="font-label-sm text-label-sm text-on-surface-variant ml-1">Your Message</label>
-                                <textarea
-                                    class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant resize-none"
-                                    placeholder="How can we help you start your tech journey?" rows="4"></textarea>
-                            </div>
-                            <button
-                                class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-bold neon-glow-primary hover:translate-y-[-2px] transition-transform">
-                                Send Request
-                            </button>
-                        </form>
-                    </div>
-                    <!-- Location Map Placeholder -->
-                    <div class="flex flex-col gap-gutter">
-                        <div
-                            class="glass-container p-6 rounded-3xl flex-grow relative overflow-hidden group border-surface-tint/10">
-                            <div class="w-full h-full rounded-2xl grayscale brightness-50 contrast-125 transition-all duration-700 group-hover:brightness-[0.4] group-hover:sepia-[0.5]"
-                                data-location="Silicon Valley">
-                                <div class="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
-                                    <div
-                                        class="bg-surface-tint/20 backdrop-blur-md p-6 rounded-full border border-surface-tint animate-pulse">
-                                        <span
-                                            class="material-symbols-outlined text-surface-tint text-4xl">location_on</span>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <div class="space-y-2">
+                                        <label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="inquiry-email">Email Address <span class="text-on-surface-variant/50">(optional)</span></label>
+                                        <input id="inquiry-email"
+                                            class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant"
+                                            placeholder="example@email.com" type="email" />
+                                    </div>
+                                    <div class="space-y-2">
+                                        <label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="inquiry-phone">Phone Number <span class="text-on-surface-variant/50">(optional)</span></label>
+                                        <input id="inquiry-phone"
+                                            class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant"
+                                            placeholder="+91 98765 43210" type="tel" />
                                     </div>
                                 </div>
-                                <div class="w-full h-full bg-surface-container-high flex items-center justify-center">
-                                    <span class="font-label-sm text-on-surface-variant">Loading Interactive Aurum
-                                        Map...</span>
-                                </div>
                             </div>
+                            <div class="space-y-2">
+                                <label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="inquiry-course">Interested Course</label>
+                                <select id="inquiry-course"
+                                    class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary appearance-none cursor-pointer"
+                                    style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22%23999077%22><path d=%22M7 10l5 5 5-5z%22/></svg>'); background-repeat: no-repeat; background-position: right 16px center;">
+                                    <option value="" style="background:#1f1f21; color:#e4e2e4;">-- Course Chunen --</option>
+                                    <option value="DCA" style="background:#1f1f21; color:#e4e2e4;">DCA (Diploma in Computer Applications)</option>
+                                    <option value="ADCA" style="background:#1f1f21; color:#e4e2e4;">ADCA (Advanced Diploma)</option>
+                                    <option value="CCC" style="background:#1f1f21; color:#e4e2e4;">CCC (Course on Computer Concepts)</option>
+                                    <option value="DTP" style="background:#1f1f21; color:#e4e2e4;">DTP (Desktop Publishing)</option>
+                                    <option value="Tally" style="background:#1f1f21; color:#e4e2e4;">Tally (Accounting)</option>
+                                    <option value="Basic" style="background:#1f1f21; color:#e4e2e4;">Basic Computer</option>
+                                    <option value="O Level" style="background:#1f1f21; color:#e4e2e4;">O Level</option>
+                                    <option value="Typing" style="background:#1f1f21; color:#e4e2e4;">Hindi/English Typing</option>
+                                    <option value="OAC" style="background:#1f1f21; color:#e4e2e4;">Office Automation</option>
+                                    <option value="Other" style="background:#1f1f21; color:#e4e2e4;">Other</option>
+                                </select>
+                            </div>
+                            <div class="space-y-2">
+                                <label class="font-label-sm text-label-sm text-on-surface-variant ml-1" for="inquiry-message">Your Message</label>
+                                <textarea id="inquiry-message"
+                                    class="w-full bg-surface-container-lowest/50 border border-surface-tint/10 rounded-xl px-5 py-4 focus:outline-none focus:border-surface-tint transition-all text-primary placeholder:text-outline-variant resize-none"
+                                    placeholder="Apna sawaal ya message likhen..." rows="4"></textarea>
+                            </div>
+                            <!-- Form Error Message Area -->
+                            <div id="form-error" class="hidden text-error text-sm font-label-sm px-4 py-3 rounded-xl bg-error-container/20 border border-error/20"></div>
+                            <!-- Success Message Area -->
+                            <div id="form-success" class="hidden text-sm font-label-sm px-4 py-3 rounded-xl bg-surface-tint/10 border border-surface-tint/30 text-primary-container"></div>
+                            <button type="submit"
+                                class="w-full bg-primary-container text-on-primary-container py-4 rounded-xl font-bold neon-glow-primary hover:translate-y-[-2px] transition-transform flex items-center justify-center gap-2">
+                                <span class="material-symbols-outlined" style="font-size:20px;">send</span>
+                                Send Inquiry via WhatsApp
+                            </button>
+                            <p class="text-center text-xs text-on-surface-variant/60 font-label-sm">Form submit karne par aapki inquiry seedha hamare WhatsApp par pahunchegi</p>
+                        </form>
+                    </div>
+                    <!-- Location Map — Google Maps Embed -->
+                    <div class="flex flex-col gap-gutter">
+                        <div
+                            class="glass-container p-3 rounded-3xl flex-grow relative overflow-hidden group border-surface-tint/10" style="min-height: 250px;">
+                            <!-- Real Google Maps Embed -->
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3561.5!2d83.35!3d26.75!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDQ1JzAwLjAiTiA4M8KwMjEnMDAuMCJF!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                                class="w-full h-full rounded-2xl border-0 grayscale-[0.6] brightness-75 contrast-110 hover:grayscale-0 hover:brightness-100 hover:contrast-100 transition-all duration-700"
+                                style="min-height: 230px;"
+                                allowfullscreen=""
+                                loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="K-Tech Computer Centre Location - Khajni, Gorakhpur">
+                            </iframe>
+                            <!-- Address Overlay Card -->
                             <div
-                                class="absolute bottom-6 left-6 right-6 p-4 glass-container rounded-xl border-surface-tint/20 bg-surface/80">
-                                <p class="font-label-sm text-label-sm text-primary-container">K-Tech Computer Centre</p>
-                                <p class="text-on-surface-variant text-sm mt-1">Banu Medical Store ke bagal, Khajni - Gorakpur</p>
+                                class="absolute bottom-5 left-5 right-5 p-4 glass-container rounded-xl border-surface-tint/20 bg-surface/85 backdrop-blur-lg">
+                                <div class="flex items-start justify-between gap-3">
+                                    <div>
+                                        <p class="font-label-sm text-label-sm text-primary-container flex items-center gap-1.5">
+                                            <span class="material-symbols-outlined text-surface-tint" style="font-size:16px; font-variation-settings: 'FILL' 1;">location_on</span>
+                                            K-Tech Computer Centre
+                                        </p>
+                                        <p class="text-on-surface-variant text-sm mt-1">Banu Medical Store ke bagal, Khajni - Gorakhpur, UP</p>
+                                    </div>
+                                    <a href="https://www.google.com/maps/search/K+Tech+Computer+Centre+Khajni+Gorakhpur" target="_blank" rel="noopener noreferrer"
+                                        class="shrink-0 bg-surface-tint/15 hover:bg-surface-tint/25 border border-surface-tint/30 text-surface-tint text-xs font-bold px-3 py-2 rounded-lg transition-all flex items-center gap-1.5">
+                                        <span class="material-symbols-outlined" style="font-size:14px;">directions</span>
+                                        Directions
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div class="grid grid-cols-2 gap-gutter">
-                            <div class="glass-container p-6 rounded-2xl flex items-center gap-4 border-surface-tint/10">
-                                <span class="material-symbols-outlined text-surface-tint">call</span>
-                                <div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-gutter">
+                            <a href="tel:8808774238" class="glass-container p-4 sm:p-6 rounded-2xl flex items-center gap-3 sm:gap-4 border-surface-tint/10 hover:border-surface-tint/30 transition-colors">
+                                <span class="material-symbols-outlined text-surface-tint shrink-0">call</span>
+                                <div class="min-w-0">
                                     <p class="text-xs font-label-sm text-on-surface-variant">Phone</p>
-                                    <p class="text-primary font-bold">8808774238, 9519958628</p>
+                                    <p class="text-primary font-bold text-xs sm:text-sm md:text-base truncate">8808774238, 9519958628</p>
                                 </div>
-                            </div>
-                            <div class="glass-container p-6 rounded-2xl flex items-center gap-4 border-surface-tint/10">
-                                <span class="material-symbols-outlined text-surface-tint">location_on</span>
-                                <div>
+                            </a>
+                            <div class="glass-container p-4 sm:p-6 rounded-2xl flex items-center gap-3 sm:gap-4 border-surface-tint/10">
+                                <span class="material-symbols-outlined text-surface-tint shrink-0">location_on</span>
+                                <div class="min-w-0">
                                     <p class="text-xs font-label-sm text-on-surface-variant">Location</p>
-                                    <p class="text-primary font-bold">Khajni, Gorakpur</p>
+                                    <p class="text-primary font-bold text-xs sm:text-sm md:text-base">Khajni, Gorakhpur</p>
                                 </div>
                             </div>
                         </div>
@@ -458,75 +523,11 @@
         </main>
         <!-- Footer -->
         <footer class="w-full mt-stack-lg border-t border-surface-tint/10 bg-surface-container-lowest/60 backdrop-blur-xl">
-            <div
-                class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-md max-w-container-max mx-auto">
-                <div class="space-y-4">
-                    <div class="flex items-center gap-2">
-                        <img alt="kTech Logo" class="h-8 w-8 object-contain" src="kTech_TPGE-removebg-preview.png" />
-                        <div class="font-headline-lg text-2xl text-primary-container font-bold">kTech</div>
-                    </div>
-                    <p class="text-on-surface-variant text-sm">Empowering students through advanced neural networks and
-                        quantum computing fundamentals since 2024.</p>
-                    <div class="flex gap-4">
-                        <a class="w-10 h-10 flex items-center justify-center rounded-full glass-container hover:text-primary transition-colors border-surface-tint/20"
-                            href="#">
-                            <span class="material-symbols-outlined text-xl">share</span>
-                        </a>
-                        <a class="w-10 h-10 flex items-center justify-center rounded-full glass-container hover:text-primary transition-colors border-surface-tint/20"
-                            href="#">
-                            <span class="material-symbols-outlined text-xl">hub</span>
-                        </a>
-                        <a class="w-10 h-10 flex items-center justify-center rounded-full glass-container hover:text-primary transition-colors border-surface-tint/20"
-                            href="#">
-                            <span class="material-symbols-outlined text-xl">terminal</span>
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="font-label-sm text-label-sm text-primary mb-6">Quick Links</h4>
-                    <ul class="space-y-3">
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Privacy Policy</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Terms of Service</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Faculty Portal</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Student Login</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-label-sm text-label-sm text-primary mb-6">Course Tracks</h4>
-                    <ul class="space-y-3">
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Data Science</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Cybersecurity</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">AI Fundamentals</a></li>
-                        <li><a class="text-on-surface-variant hover:text-primary transition-colors hover:translate-x-1 inline-block"
-                                href="#">Cloud Architecture</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="font-label-sm text-label-sm text-primary mb-6">Newsletter</h4>
-                    <p class="text-on-surface-variant text-sm mb-4">Stay updated with our latest course drops.</p>
-                    <div class="relative">
-                        <input
-                            class="w-full bg-white/5 border border-surface-tint/10 rounded-lg px-4 py-3 focus:outline-none focus:border-surface-tint"
-                            placeholder="system@user.io" type="email" />
-                        <button
-                            class="absolute right-2 top-2 p-1.5 text-surface-tint hover:bg-surface-tint/20 rounded-md transition-all">
-                            <span class="material-symbols-outlined">send</span>
-                        </button>
-                    </div>
-                </div>
+            <div class="py-8 text-center space-y-2">
+                <p class="font-label-sm text-label-sm text-on-surface-variant text-xs">© <script>document.write(new Date().getFullYear())</script> kTech Education Center. All Rights Reserved.</p>
+                <p class="font-label-sm text-label-sm text-on-surface-variant/60 text-xs">Made with ❤️ by Anand Singh</p>
             </div>
-            <div class="border-t border-surface-tint/5 py-8 text-center">
-                <p class="font-label-sm text-label-sm text-on-surface-variant text-xs">© 2024 kTech Education Center. Neural
-                    Networks Division. All Rights Reserved.</p>
-                </div>
-            </footer>
+        </footer>
             <div id="akgec-space-root" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden; background: #000000; pointer-events: none;">
             <div id="space-mouse-glow" style="position: absolute; width: 520px; height: 520px; background: radial-gradient(circle, rgba(255, 220, 120, 0.14) 0%, rgba(255, 220, 120, 0.03) 50%, transparent 70%); border-radius: 50%; pointer-events: none; transform: translate(-50%, -50%); top: -1000px; left: -1000px; filter: blur(34px); mix-blend-mode: screen;"></div>
         </div>

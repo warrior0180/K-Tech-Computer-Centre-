@@ -126,6 +126,9 @@
     animate();
 
     const topLinks = document.querySelectorAll('.top-link');
+    const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+    const allNavLinks = [...topLinks, ...mobileLinks];
+
     const sections = Array.from(topLinks)
         .map(link => {
             const target = link.getAttribute('href');
@@ -133,28 +136,99 @@
         })
         .filter(Boolean);
 
-    function setActiveLink(targetLink) {
-        topLinks.forEach(link => link.classList.toggle('active', link === targetLink));
+    function setActiveLink(targetId) {
+        topLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${targetId}`));
+        mobileLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${targetId}`));
     }
 
+    // Smooth Scroll for Desktop Navigation Links
     topLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            setActiveLink(link);
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSec = document.getElementById(targetId);
+            if (targetSec) {
+                targetSec.scrollIntoView({ behavior: 'smooth' });
+                setActiveLink(targetId);
+            }
         });
     });
 
+    // Mobile Navigation Controls
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenuClose = document.getElementById('mobile-menu-close');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+    const mobileNavPanel = document.getElementById('mobile-nav-panel');
+
+    function openMobileMenu() {
+        mobileNavOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Stop background scrolling
+    }
+
+    function closeMobileMenu() {
+        mobileNavOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (mobileMenuBtn) {
+        mobileMenuBtn.addEventListener('click', openMobileMenu);
+    }
+
+    if (mobileMenuClose) {
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+
+    if (mobileNavOverlay) {
+        // Close if click outside panel
+        mobileNavOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileNavOverlay) {
+                closeMobileMenu();
+            }
+        });
+    }
+
+    // Mobile Links Click Handler
+    mobileLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href').substring(1);
+            const targetSec = document.getElementById(targetId);
+            closeMobileMenu();
+            if (targetSec) {
+                setTimeout(() => {
+                    targetSec.scrollIntoView({ behavior: 'smooth' });
+                    setActiveLink(targetId);
+                }, 300); // Wait for transition out
+            }
+        });
+    });
+
+    // Mobile CTA click
+    const mobileNavCta = document.querySelector('.mobile-nav-cta');
+    if (mobileNavCta) {
+        mobileNavCta.addEventListener('click', (e) => {
+            e.preventDefault();
+            closeMobileMenu();
+            setTimeout(() => {
+                const contactSec = document.getElementById('contact');
+                if (contactSec) {
+                    contactSec.scrollIntoView({ behavior: 'smooth' });
+                }
+            }, 300);
+        });
+    }
+
     function updateActiveOnScroll() {
-        const scrollPosition = window.scrollY + 100;
-        let current = topLinks[0];
+        const scrollPosition = window.scrollY + 120;
+        let currentId = sections[0]?.id || 'home';
 
         for (const section of sections) {
             if (section.offsetTop <= scrollPosition) {
-                const matchingLink = Array.from(topLinks).find(link => link.getAttribute('href') === `#${section.id}`);
-                if (matchingLink) current = matchingLink;
+                currentId = section.id;
             }
         }
 
-        setActiveLink(current);
+        setActiveLink(currentId);
     }
 
     window.addEventListener('scroll', updateActiveOnScroll);
@@ -297,75 +371,83 @@
         });
     }
 
-    // Contact Form Handler
-    const contactForm = document.querySelector('form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+    // Contact Form Handler — WhatsApp Integration
+    const inquiryForm = document.getElementById('inquiry-form');
+    if (inquiryForm) {
+        const WHATSAPP_NUMBER = '918808774238'; // India country code + number
+
+        inquiryForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            
-            const nameInput = contactForm.querySelector('input[type="text"]');
-            const emailInput = contactForm.querySelector('input[type="email"]');
-            const phoneInput = contactForm.querySelector('input[type="tel"]');
-            const messageInput = contactForm.querySelector('textarea');
 
-            const name = nameInput.value.trim();
-            const email = emailInput.value.trim();
-            const phone = phoneInput.value.trim();
-            const message = messageInput.value.trim();
+            const formError = document.getElementById('form-error');
+            const formSuccess = document.getElementById('form-success');
+            formError.classList.add('hidden');
+            formSuccess.classList.add('hidden');
 
-            // Validation
-            if (!name || !email || !phone || !message) {
-                alert('❌ Please fill in all fields!');
+            const name = document.getElementById('inquiry-name').value.trim();
+            const email = document.getElementById('inquiry-email').value.trim();
+            const phone = document.getElementById('inquiry-phone').value.trim();
+            const course = document.getElementById('inquiry-course').value;
+            const message = document.getElementById('inquiry-message').value.trim();
+
+            // Validation: Name is required
+            if (!name) {
+                formError.textContent = '❌ Please apna naam likhen!';
+                formError.classList.remove('hidden');
+                document.getElementById('inquiry-name').focus();
                 return;
             }
 
-            if (!email.includes('@')) {
-                alert('❌ Please enter a valid email address!');
+            // Validation: At least one of email or phone required
+            if (!email && !phone) {
+                formError.textContent = '❌ Email ya Phone Number — kam se kam ek toh dena zaruri hai!';
+                formError.classList.remove('hidden');
+                document.getElementById('inquiry-email').focus();
                 return;
             }
 
-            if (phone.length < 10) {
-                alert('❌ Please enter a valid phone number!');
+            // Validation: If email is provided, check format
+            if (email && !email.includes('@')) {
+                formError.textContent = '❌ Please sahi email address likhen!';
+                formError.classList.remove('hidden');
+                document.getElementById('inquiry-email').focus();
                 return;
             }
 
-            // Success message
-            alert(`✅ Thank you ${name}!\n\nYour inquiry has been received. We'll contact you at ${email} or ${phone} soon!`);
-            
-            // Clear form
-            contactForm.reset();
-            console.log('Form submitted:', { name, email, phone, message });
+            // Validation: If phone is provided, check minimum length
+            if (phone && phone.replace(/\D/g, '').length < 10) {
+                formError.textContent = '❌ Please sahi phone number likhen (kam se kam 10 digit)!';
+                formError.classList.remove('hidden');
+                document.getElementById('inquiry-phone').focus();
+                return;
+            }
+
+            // Build WhatsApp message
+            let waMsg = `🎓 *kTech Computer Centre — New Inquiry*\n\n`;
+            waMsg += `👤 *Name:* ${name}\n`;
+            if (email) waMsg += `📧 *Email:* ${email}\n`;
+            if (phone) waMsg += `📱 *Phone:* ${phone}\n`;
+            if (course) waMsg += `📚 *Interested Course:* ${course}\n`;
+            if (message) waMsg += `💬 *Message:* ${message}\n`;
+            waMsg += `\n📅 *Date:* ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' })}`;
+
+            // Encode and open WhatsApp
+            const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMsg)}`;
+
+            // Show success message
+            formSuccess.innerHTML = '✅ Inquiry taiyar hai! WhatsApp khul raha hai... <br><span class="text-xs text-on-surface-variant">Agar WhatsApp nahi khula toh <a href="' + waUrl + '" target="_blank" class="underline text-surface-tint">yahan click karein</a></span>';
+            formSuccess.classList.remove('hidden');
+
+            // Open WhatsApp in new tab
+            window.open(waUrl, '_blank');
+
+            // Clear form after short delay
+            setTimeout(() => {
+                inquiryForm.reset();
+            }, 1500);
+
+            console.log('Inquiry sent to WhatsApp:', { name, email, phone, course, message });
         });
     }
 
-    // Newsletter Subscribe Button
-    const newsletterBtn = document.querySelector('footer input[type="email"]');
-    if (newsletterBtn && newsletterBtn.nextElementSibling) {
-        newsletterBtn.nextElementSibling.addEventListener('click', function(e) {
-            e.preventDefault();
-            const email = newsletterBtn.value.trim();
-
-            if (!email || !email.includes('@')) {
-                alert('❌ Please enter a valid email address!');
-                return;
-            }
-
-            alert(`✅ Subscribed!\n\nYou'll receive updates about new courses and events at ${email}`);
-            newsletterBtn.value = '';
-            console.log('Newsletter subscription:', email);
-        });
-    }
-
-    // Footer Quick Links and Social Links
-    document.querySelectorAll('footer a[href="#"]').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const text = this.textContent.trim();
-            if (text) {
-                alert(`📄 ${text} page coming soon!`);
-            } else {
-                alert('🔗 Social media integration coming soon!');
-            }
-        });
-    });
 })();
