@@ -208,6 +208,112 @@ main.relative {
     }
 }
 
+.new_course {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff 0%, #f6f6f6 100%);
+    border: 1px solid rgba(255, 215, 0, 0.25);
+    border-radius: 1.25rem;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    cursor: zoom-in;
+}
+
+.new_course-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffd700, #ffdd70);
+    color: #111;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    box-shadow: 0 6px 18px rgba(255, 215, 0, 0.18);
+    z-index: 2;
+}
+
+.new_course-image-shell {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new_course img {
+    width: 100%;
+    max-height: 280px;
+    object-fit: contain;
+    display: block;
+    border-radius: 0.85rem;
+    background-color: #fff;
+    padding: 0.4rem;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.new_course:hover .new_course-image-shell img {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.15);
+}
+
+.new_course-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+    background: rgba(0, 0, 0, 0.88);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.new_course-overlay img {
+    max-width: min(95vw, 1200px);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 1rem;
+    transform: scale(0.9);
+    transition: transform 0.35s ease;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.new_course:hover .new_course-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.new_course:hover .new_course-overlay img {
+    transform: scale(1);
+}
+
+@media (max-width: 768px) {
+    .new_course {
+        padding: 0.7rem;
+        border-radius: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .new_course img {
+        max-height: 220px;
+    }
+
+    .new_course-overlay {
+        padding: 0.75rem;
+    }
+}
+
 .hero-logo-wrapper {
     max-width: 180px;
     margin-left: auto;
@@ -489,4 +595,8 @@ main.relative {
 
 .mobile-nav-cta:active {
     transform: scale(0.98);
-}
+}
+.new_course {
+    height: 400px;
+    width:400px;
+}
