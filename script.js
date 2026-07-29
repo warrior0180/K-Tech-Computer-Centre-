@@ -271,6 +271,20 @@
     }
 
     // ==================== BUTTON FUNCTIONALITY ====================
+
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        const toggleBackToTop = () => {
+            backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+        };
+
+        window.addEventListener('scroll', toggleBackToTop, { passive: true });
+        toggleBackToTop();
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
     
     // Course Details Modal
     const courseDetails = {
